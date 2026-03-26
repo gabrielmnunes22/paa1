@@ -55,8 +55,26 @@ def sum_degrees(graph):
         total += len(graph[v])
     return total
 
+# verifies if there is an edge between vertices v1 and v2 -> O(n)
+def contains_edge_slow(graph, v1, v2):
+    if v1 in graph:
+        for v in graph[v1]:
+            if v == v2:
+                return True
+    return False
+
+def contains_edge(graph, v1, v2):
+    return v1 in graph and v2 in graph[v1]
+
+
+def show_graph(graph):
+    print("Lista de Adjacência: ")
+    for v in graph:
+        print(f"{v} : {graph[v]}")
+    print()
 
 # teste das funções
+show_graph(G1)
 
 add_vertex(G1, 'G')
 print("criando nodo G: ")
@@ -66,14 +84,16 @@ print("adicionado aresta entre os nodos G e A")
 add_edge(G1, 'G', 'A')
 print(f"G: {G1['G']}")
 print(f"A: {G1['A']}")
-print(f"soma dos graus dos vertices de G1: {sum_degrees(G1)}")
+print(f"soma dos graus dos vértices de G1: {sum_degrees(G1)}")
 
 print("removendo nodo G")
 remove_vertex(G1, 'G')
 print(f"A: {G1['A']}")
 
-print(f"soma dos graus dos vertices de G1: {sum_degrees(G1)}")
+print(f"soma dos graus dos vértices de G1: {sum_degrees(G1)}")
 
+print("verificando se há aresta entre os vértices B e D:", end = " ")
+print(contains_edge(G1, 'E', 'D'))
 
 
 
