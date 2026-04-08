@@ -21,7 +21,20 @@ def dfs_iterativo(graph, visited, s):
             if visited[i] == False:
                 visited[i] = True
                 stack.append(i)
-            
+
+def bfs_iterativo(graph, visited, s):
+    queue = []
+    queue.append(s)
+    visited[s] = True
+
+    while(len(queue) > 0):
+        key = queue.pop(0)                  # Fila 
+        print(key)
+
+        for i in graph[key]:
+            if visited[i] == False:
+                queue.append(i)
+                visited[i] = True 
 
 G1 = {
     'A': ['B', 'E'],
@@ -40,4 +53,5 @@ for key in G1.keys():       # Começo: nenhum nó visitado
 
 
 #dfs_recursivo(G1, v, 'A')
-dfs_iterativo(G1, v, 'A')
+#dfs_iterativo(G1, v, 'A')
+bfs_iterativo(G1, v, 'A')
